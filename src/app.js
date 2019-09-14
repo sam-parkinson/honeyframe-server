@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 const helmet = require('helmet');
 const { NODE_ENV, CLIENT_ORIGIN } = require('./config');
+const blogRouter = require('./blog/blog-router');
 
 const app = express();
 
@@ -18,6 +19,8 @@ app.use(
   })
 );
 app.use(helmet());
+
+app.use('/api/blog', blogRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello, world!');
