@@ -6,6 +6,8 @@ describe.only('Blog Endpoints', function() {
   let db;
 
   const {
+    blogCat,
+    shopCat,
     testBlog,
     testShop,
   } = helpers.makeSiteFixtures();
@@ -30,6 +32,23 @@ describe.only('Blog Endpoints', function() {
         return supertest(app)
           .get('/api/blog')
           .expect(200, []);
+      });
+    });
+
+    context(`Given there are posts in the database`, () => {
+      beforeEach('insert blog posts', () => 
+        helpers.seedBlog(
+          db,
+          blogCat,
+          testBlog
+        )
+      )
+
+      it('responds with 200 and all blog posts', () => {
+        const expectedBlog = helpers.makeExpectedBlog(testBlog);
+        return supertest(app)
+          .get('/api/blog')
+          .expect(200, expectedBlog)
       });
     });
   });

@@ -10,9 +10,12 @@ blogRouter
       req.app.get('db')
     )
       .then(posts => {
-        res.json(posts)
+        res.json(posts.map(BlogService.scrubBlogShort))
       })
       .catch(next)
   })
+
+blogRouter
+  .route('/:post_id')
 
 module.exports = blogRouter;

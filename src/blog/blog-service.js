@@ -1,3 +1,5 @@
+const xss = require('xss');
+
 const BlogService = {
   getAllPosts(db) {
     return db
@@ -14,7 +16,17 @@ const BlogService = {
         'blog.cat_id',
         'cat.id'
       )
-  }
+  },
+  scrubBlogShort(blog) {
+    return {
+      id: blog.id,
+      title: xss(blog.title),
+      preview: xss(blog.preview),
+      date_posted: new Date(blog.date_posted),
+      category: blog.category
+    }
+  },
+  scrubBlogLong(blog) {},
 };
 
 module.exports = BlogService;

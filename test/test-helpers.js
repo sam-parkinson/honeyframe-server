@@ -58,13 +58,25 @@ function makeShopArray(cat) {
   ]
 }
 
+function makeExpectedBlog(blog) {
+  return blog.map(post => (
+    {
+      id: post.id,
+      title: post.title,
+      preview: post.preview,
+      date_posted: post.date_posted.toISOString(),
+      category: 'test'
+    }
+  ))
+}
+
 function makeSiteFixtures() {
   const blogCat = makeBlogCategories();
   const shopCat = makeShopCategories();
   const testBlog = makeBlogArray(blogCat);
   const testShop = makeShopArray(shopCat);
 
-  return { testBlog, testShop };
+  return { blogCat, shopCat, testBlog, testShop };
 }
 
 function cleanTables(db) {
@@ -90,11 +102,58 @@ function cleanTables(db) {
   )
 }
 
+function seedBlogCat(db, cat) {
+  return db.into('blog_categories').insert(cat)
+    .then(() =>
+      db.raw(
+        `SELECT setval('blog_categories_id_seq', ?)`,
+        [cat[cat.length - 1].id],
+      )
+    )
+}
+
+function seedShopCat(db, cat) {
+  return db.into('shop_categories').insert(cat)
+    .then(() =>
+      db.raw(
+        `SELECT setval('shop_categories_id_seq', ?)`,
+        [cat[cat.length - 1].id],
+      )
+    )
+}
+
+function seedBlog(db, cat, blog) {
+  return db.transaction(async trx => {
+    await seedBlogCat(trx, cat)
+    await trx.into('blog').insert(blog)
+    await trx.raw(
+      `SELECT setval('blog_id_seq', ?)`,
+      [blog[blog.length - 1].id],
+    )
+  })
+}
+
+function seedShop(db, cat, shop) {
+  return db.transaction(async trx => {
+    await seedShopCat(trx, cat)
+    await trx.into('shop').insert(shop)
+    await trx.raw(
+      `SELECT setval('shop_id_seq', ?)`,
+      [shop[shop.length - 1].id],
+    )
+  })
+}
+
 module.exports = {
   makeBlogCategories,
   makeShopCategories,
   makeBlogArray,
+  makeExpectedBlog,
 
   makeSiteFixtures,
   cleanTables,
+  seedBlogCat,
+  seedShopCat,
+  seedBlog,
+  seedShop,
 }
