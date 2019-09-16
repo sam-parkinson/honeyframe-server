@@ -9,6 +9,10 @@ blogRouter
     BlogService.getAllPosts(
       req.app.get('db')
     )
+      .then(posts => {
+        res.json(posts)
+      })
+      .catch(next)
   })
 
 module.exports = blogRouter;
