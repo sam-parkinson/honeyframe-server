@@ -70,6 +70,19 @@ function makeExpectedBlog(blog) {
   ))
 }
 
+function makeExpectedShop(shop) {
+  return shop.map(item => (
+    {
+      id: item.id,
+      item_name: item.item_name,
+      item_desc: item.item_desc,
+      price: item.price,
+      date_harvested: item.date_harvested.toLocaleString(),
+      category: 'test'
+    }
+  ))
+}
+
 function makeSiteFixtures() {
   const blogCat = makeBlogCategories();
   const shopCat = makeShopCategories();
@@ -149,6 +162,7 @@ module.exports = {
   makeShopCategories,
   makeBlogArray,
   makeExpectedBlog,
+  makeExpectedShop,
 
   makeSiteFixtures,
   cleanTables,

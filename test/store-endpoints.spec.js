@@ -32,5 +32,22 @@ describe.only('Store Endpoints', function () {
           .expect(200, []);
       });
     });
+
+    context(`Given items in store`, () => {
+      beforeEach('insert shop items', () => 
+        helpers.seedShop(
+          db,
+          shopCat,
+          testShop
+        )
+      )
+
+      it('responds with 200 and all shop items', () => {
+        const expectedShop = helpers.makeExpectedShop(testShop);
+        return supertest(app)
+          .get('/api/store')
+          .expect(200, expectedShop)
+      });
+    });
   });
 });
