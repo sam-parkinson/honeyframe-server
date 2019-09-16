@@ -7,9 +7,7 @@ describe('Blog Endpoints', function() {
 
   const {
     blogCat,
-    shopCat,
     testBlog,
-    testShop,
   } = helpers.makeSiteFixtures();
 
   before('make knex instance', () => {
