@@ -17,6 +17,24 @@ const BlogService = {
         'cat.id'
       )
   },
+  getPostById(db, id) {
+    return db
+      .from('blog')  
+      .select(
+        'blog.id',
+        'blog.title',
+        'blog.post',
+        'blog.date_posted',
+        'cat.category'
+      )
+      .leftJoin(
+        'blog_categories AS cat',
+        'blog.cat_id',
+        'cat.id'
+      )
+      .where('blog.id', id)
+      .first()
+  },
   scrubBlogShort(blog) {
     return {
       id: blog.id,
@@ -26,7 +44,15 @@ const BlogService = {
       category: blog.category
     }
   },
-  scrubBlogLong(blog) {},
+  scrubBlogLong(blog) {
+    return {
+      id: blog.id,
+      title: xss(blog.title),
+      post: xss(blog.post),
+      date_posted: new Date(blog.date_posted),
+      category: blog.category
+    }
+  },
 };
 
 module.exports = BlogService;

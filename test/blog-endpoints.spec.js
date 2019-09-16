@@ -2,7 +2,7 @@ const knex = require('knex');
 const app = require('../src/app');
 const helpers = require('./test-helpers');
 
-describe.only('Blog Endpoints', function() {
+describe('Blog Endpoints', function() {
   let db;
 
   const {
@@ -48,6 +48,32 @@ describe.only('Blog Endpoints', function() {
         const expectedBlog = helpers.makeExpectedBlog(testBlog);
         return supertest(app)
           .get('/api/blog')
+          .expect(200, expectedBlog)
+      });
+    });
+  });
+
+  describe(`GET /api/blog/:post_id`, () => {
+    context('Given there are posts in DB', () => {
+      beforeEach('insert posts', () => 
+        helpers.seedBlog(
+          db,
+          blogCat,
+          testBlog
+        )
+      )
+
+      it(`responds with the requested post`, () => {
+        const blogPost = testBlog[0]
+        const expectedBlog = {
+          id: blogPost.id,
+          title: blogPost.title,
+          post: blogPost.post,
+          date_posted: blogPost.date_posted.toISOString(),
+          category: 'test'
+        }
+        return supertest(app)
+          .get(`/api/blog/${blogPost.id}`)
           .expect(200, expectedBlog)
       });
     });
