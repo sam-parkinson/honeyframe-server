@@ -74,46 +74,25 @@ INSERT INTO blog (
 )
 VALUES
   (
-    'Filler Title',
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pellentesque...',
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-      incididunt ut labore et dolore magna aliqua. Pellentesque diam volutpat commodo sed 
-      egestas egestas fringilla phasellus. Aliquam ultrices sagittis orci a scelerisque. 
-      Metus dictum at tempor commodo ullamcorper a lacus vestibulum. Vitae auctor eu augue ut. 
-      Libero id faucibus nisl tincidunt eget. Quis auctor elit sed vulputate mi. Nisl nisi scelerisque eu ultrices vitae auctor. 
-      Purus ut faucibus pulvinar elementum integer enim neque volutpat. Volutpat est velit egestas dui id ornare. Rutrum tellus pellentesque eu 
-      tincidunt tortor aliquam nulla. Ut placerat orci nulla pellentesque dignissim enim sit. Neque volutpat ac tincidunt vitae semper. Vitae auctor eu augue 
-      ut. Congue mauris rhoncus aenean vel elit scelerisque. Curabitur gravida arcu ac tortor dignissim convallis.
+    'Welcome!',
+    'Hello everyone! This is the first-ever blog post at Honeyframe, a fictional small business that sells honey...',
+    'Hello everyone! This is the first-ever blog post at Honeyframe, a fictional small business that sells honey and beeswax! This site and fictional business were created as a capstone project for Sam Parkinson to show off his front-end and back-end coding skills, and the framework is designed loosely enough that the site should be relatively easy to repurpose for a different small business. The styling will need to be redone, and the database and related queries rebuilt, but the architecture should remain in place.
     ',
     1
   ),
   (
-    'Second Filler Title',
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pellentesque...',
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-      incididunt ut labore et dolore magna aliqua. Pellentesque diam volutpat commodo sed 
-      egestas egestas fringilla phasellus. Aliquam ultrices sagittis orci a scelerisque. 
-      Metus dictum at tempor commodo ullamcorper a lacus vestibulum. Vitae auctor eu augue ut. 
-      Libero id faucibus nisl tincidunt eget. Quis auctor elit sed vulputate mi. Nisl nisi scelerisque eu ultrices vitae auctor. 
-      Purus ut faucibus pulvinar elementum integer enim neque volutpat. Volutpat est velit egestas dui id ornare. Rutrum tellus pellentesque eu 
-      tincidunt tortor aliquam nulla. Ut placerat orci nulla pellentesque dignissim enim sit. Neque volutpat ac tincidunt vitae semper. Vitae auctor eu augue 
-      ut. Congue mauris rhoncus aenean vel elit scelerisque. Curabitur gravida arcu ac tortor dignissim convallis.
+    'Bees are neat!',
+    'Bees are really neat! They make honey and wax, and also pollinate flowers! Fun fact:...',
+    'Bees are really neat! They make honey and wax, and also pollinate flowers! Fun fact: the guy who made this website is actually quite terrified of bees. But honeycombs are a cool geometric structure!
     ',
     1
   ),
   (
-    'Third Filler Title',
+    'Check Out the Shop!',
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pellentesque...',
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-      incididunt ut labore et dolore magna aliqua. Pellentesque diam volutpat commodo sed 
-      egestas egestas fringilla phasellus. Aliquam ultrices sagittis orci a scelerisque. 
-      Metus dictum at tempor commodo ullamcorper a lacus vestibulum. Vitae auctor eu augue ut. 
-      Libero id faucibus nisl tincidunt eget. Quis auctor elit sed vulputate mi. Nisl nisi scelerisque eu ultrices vitae auctor. 
-      Purus ut faucibus pulvinar elementum integer enim neque volutpat. Volutpat est velit egestas dui id ornare. Rutrum tellus pellentesque eu 
-      tincidunt tortor aliquam nulla. Ut placerat orci nulla pellentesque dignissim enim sit. Neque volutpat ac tincidunt vitae semper. Vitae auctor eu augue 
-      ut. Congue mauris rhoncus aenean vel elit scelerisque. Curabitur gravida arcu ac tortor dignissim convallis.
+    'By clicking the link at the top of the page, you can see what products are in stock in our shop! We have a few different harvests of honey for sale. Since the bees are active throughout the summer, they harvest from flowers that bloom at different times of the year. As a result, different batches of honey have subtle differences in flavor! If you want, you can buy a sample pack of small jars of honey from different harvests so you can figure out which honey is your favorite.
     ',
-    2
+    3
   );
 
 COMMIT;
