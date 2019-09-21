@@ -3,6 +3,7 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const helmet = require('helmet');
+const path = require('path');
 const { NODE_ENV, CLIENT_ORIGIN } = require('./config');
 const blogRouter = require('./blog/blog-router');
 const storeRouter = require('./store/store-router');
@@ -25,6 +26,7 @@ app.use(helmet());
 app.use('/api/blog', blogRouter);
 app.use('/api/store', storeRouter);
 app.use('/api/contact', contactRouter);
+app.use('/img', express.static(path.posix.join(process.cwd(), 'img')))
 
 app.use(function errorHandler(error, req, res, next) {
   let response;
