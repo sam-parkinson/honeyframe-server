@@ -89,7 +89,7 @@ VALUES
   ),
   (
     'Check Out the Shop!',
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pellentesque...',
+    'By clicking the link at the top of the page, you can see what products are in stock in our shop! We have...',
     'By clicking the link at the top of the page, you can see what products are in stock in our shop! We have a few different harvests of honey for sale. Since the bees are active throughout the summer, they harvest from flowers that bloom at different times of the year. As a result, different batches of honey have subtle differences in flavor! If you want, you can buy a sample pack of small jars of honey from different harvests so you can figure out which honey is your favorite.
     ',
     3
