@@ -26,7 +26,7 @@ app.use(helmet());
 app.use('/api/blog', blogRouter);
 app.use('/api/store', storeRouter);
 app.use('/api/contact', contactRouter);
-app.use('/img', express.static(path.posix.join(process.cwd(), 'img')))
+app.use('/api/img', express.static(path.posix.join(process.cwd(), 'img')))
 
 app.use(function errorHandler(error, req, res, next) {
   let response;
