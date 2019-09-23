@@ -4,5 +4,6 @@ CREATE TABLE shop (
   item_desc TEXT,
   price NUMERIC NOT NULL,
   date_harvested DATE,
+  img_url TEXT,
   cat_id INTEGER REFERENCES shop_categories(id) NOT NULL
 );

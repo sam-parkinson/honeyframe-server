@@ -25,6 +25,7 @@ VALUES
 INSERT INTO shop (
   item_name,
   item_desc,
+  img_url,
   price,
   date_harvested,
   cat_id
@@ -32,21 +33,24 @@ INSERT INTO shop (
 VALUES
   (
     'Honey',
-    '<img src="https://picsum.photos/100" alt="honey" /><p>Early summer honey with floral notes</p>',
+    'Early summer honey with floral notes',
+    'https://picsum.photos/100',
     7.50,
     '2019-06-07',
     1
   ),
   (
     'Honey',
-    '<img src="https://picsum.photos/100" alt="honey" /><p>Late sumer honey with </p>',
+    'Late summer honey with a fruitier flavor profile',
+    'https://picsum.photos/100',
     7.50,
     '2019-08-07',
     1
   ),
   (
     'Beeswax',
-    '<img src="https://picsum.photos/100" alt="beeswax" /><p>Unprocessed beeswax</p>',
+    'Unprocessed beeswax',
+    'https://picsum.photos/100',
     5.00,
     '2019-06-07',
     2
@@ -54,13 +58,15 @@ VALUES
   (
     'Beeswax Candles',
     'Hand-rolled candles made with beeswax',
+    null,
     6.50,
     '2019-06-07',
     2
   ),
   (
     'Raw Comb',
-    '<img src="https://picsum.photos/100" alt="raw honey comb" /><p></p>',
+    'Raw honeycomb, fresh from the hive!',
+    'https://picsum.photos/100',
     5.00,
     '2019-08-07',
     3
