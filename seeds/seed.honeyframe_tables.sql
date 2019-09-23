@@ -32,21 +32,21 @@ INSERT INTO shop (
 VALUES
   (
     'Honey',
-    '<img src="" alt="honey" /><p>Early summer honey with floral notes</p>',
+    '<img src="https://picsum.photos/100" alt="honey" /><p>Early summer honey with floral notes</p>',
     7.50,
     '2019-06-07',
     1
   ),
   (
     'Honey',
-    '<img src="" alt="honey" /><p>Late sumer honey with </p>',
+    '<img src="https://picsum.photos/100" alt="honey" /><p>Late sumer honey with </p>',
     7.50,
     '2019-08-07',
     1
   ),
   (
     'Beeswax',
-    '<img src="" alt="beeswax" /><p>Unprocessed beeswax</p>',
+    '<img src="https://picsum.photos/100" alt="beeswax" /><p>Unprocessed beeswax</p>',
     5.00,
     '2019-06-07',
     2
@@ -60,7 +60,7 @@ VALUES
   ),
   (
     'Raw Comb',
-    '<img src="" alt="raw honey comb" /><p></p>',
+    '<img src="https://picsum.photos/100" alt="raw honey comb" /><p></p>',
     5.00,
     '2019-08-07',
     3
