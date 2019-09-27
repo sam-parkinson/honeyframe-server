@@ -34,7 +34,7 @@ VALUES
   (
     'Honey',
     'Early summer honey with floral notes',
-    'https://picsum.photos/100',
+    'img/store/honey.jpg',
     7.50,
     '2019-06-07',
     1
@@ -42,7 +42,7 @@ VALUES
   (
     'Honey',
     'Late summer honey with a fruitier flavor profile',
-    'https://picsum.photos/100',
+    'img/store/honey.jpg',
     7.50,
     '2019-08-07',
     1
@@ -50,7 +50,7 @@ VALUES
   (
     'Beeswax',
     'Unprocessed beeswax',
-    'https://picsum.photos/100',
+    'img/store/wax.jpg',
     5.00,
     '2019-06-07',
     2
@@ -66,7 +66,7 @@ VALUES
   (
     'Raw Comb',
     'Raw honeycomb, fresh from the hive!',
-    'https://picsum.photos/100',
+    'img/store/wax.jpg',
     5.00,
     '2019-08-07',
     3
