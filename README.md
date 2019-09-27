@@ -1,29 +1,23 @@
-# Express Boilerplate!
+# Honeyframe API
 
-This is a boilerplate project used for starting new projects!
+The API for Honeyframe, an app designed to function as a combination storefront and blog for a fictionalized beekeeping business. The base of this API can be further built on and customized for other small businesses as needed.
 
-## Set up
+## API Documentation
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
+RESTful API featuring the following endpoints:
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
+  - Blog
+    Accepts get requests, returns summaries of all blog posts in database as well as full-length individual blog posts
 
-## Scripts
+  - Store
+    Accepts get requests, returns information about store products
 
-Start the application `npm start`
+  - Contact
+    Accepts post requests, adds new contact information to database
 
-Start nodemon for the application `npm run dev`
+## Image Credits
 
-Run the tests `npm test`
-
-## Deploying
-
-When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's master branch.
+All images used with permission from https://www.instagram.com/westavehoney/
 
 ## Seed
 
