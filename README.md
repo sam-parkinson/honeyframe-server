@@ -15,10 +15,16 @@ RESTful API featuring the following endpoints:
   - Contact
     Accepts post requests, adds new contact information to database
 
+## Client
+
+Live: https://honeyframe.parkinsonsp42.now.sh/
+
+Repo: https://github.com/sam-parkinson/honeyframe-client
+
+## Technology Used
+
+Node.js, Express, PostgreSQL
+
 ## Image Credits
 
 All images used with permission from https://www.instagram.com/westavehoney/
-
-## Seed
-
-psql -U postgres -d honeyframe -f ./seeds/seed.honeyframe_tables.sql
