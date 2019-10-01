@@ -35,6 +35,16 @@ const BlogService = {
       .where('blog.id', id)
       .first()
   },
+  insertPost(db, newPost) {
+    return db
+      .insert(newPost)
+      .into('blog')
+      .returning('*')
+      .then(([post]) => post)
+      .then(post =>
+        BlogService.getPostById(db, post.id)
+      )
+  },
   scrubBlogShort(blog) {
     return {
       id: blog.id,

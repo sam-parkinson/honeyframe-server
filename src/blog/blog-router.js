@@ -1,7 +1,10 @@
 const express = require('express');
+const xss = require('xss');
 const BlogService = require('./blog-service');
+const { requireAuth } = require('../middleware/jwt-auth');
 
 const blogRouter = express.Router();
+const jsonBodyParser = express.json();
 
 blogRouter
   .route('/')
@@ -11,6 +14,34 @@ blogRouter
     )
       .then(posts => {
         res.json(posts.map(BlogService.scrubBlogShort))
+      })
+      .catch(next)
+  })
+  .post(requireAuth, jsonBodyParser, (req, res, next) => {
+    const { title, post, cat_id } = req.body;
+    const newPost = {
+      title: xss(title),
+      post: xss(post),
+      cat_id,
+    };
+
+    for (const [key, value] of Object.entries(newPost))
+      if (value == null)
+        return res.status(400).json({
+          error: `Missing '${key}' in request body`
+        });
+
+    newPost.preview = newPost.post.slice(0, 100);
+
+    BlogService.insertPost(
+      req.app.get('db'),
+      newPost
+    )
+      .then(post => {
+        res
+          .status(201)
+          .location(path.posix.join(req.originalUrl, `/${post.id}`)) 
+          .json(BlogService.scrubBlogLong(post))     
       })
       .catch(next)
   })
