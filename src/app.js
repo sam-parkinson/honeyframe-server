@@ -5,6 +5,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const path = require('path');
 const { NODE_ENV, CLIENT_ORIGIN } = require('./config');
+const authRouter = require('./auth/auth-router');
 const blogRouter = require('./blog/blog-router');
 const storeRouter = require('./store/store-router');
 const contactRouter = require('./contact/contact-router');
@@ -23,10 +24,11 @@ app.use(
 );
 app.use(helmet());
 
+app.use('/api/auth', authRouter);
 app.use('/api/blog', blogRouter);
 app.use('/api/store', storeRouter);
 app.use('/api/contact', contactRouter);
-app.use('/api/img', express.static(path.posix.join(process.cwd(), 'img')))
+app.use('/api/img', express.static(path.posix.join(process.cwd(), 'img')));
 
 app.use(function errorHandler(error, req, res, next) {
   let response;
@@ -37,6 +39,6 @@ app.use(function errorHandler(error, req, res, next) {
     response = { message: error.message, error };
   }
   res.status(500).json(response);
-})
+});
 
 module.exports = app;
