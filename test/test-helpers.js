@@ -1,3 +1,17 @@
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
+function makeUsersArray() {
+  return [
+    {
+      id: 1,
+      user_name: 'testuser1',
+      password: 'password',
+      date_created: new Date('2018-01-01T12:12:12.123Z')
+    }
+  ]
+}
+
 function makeBlogCategories() {
   return [
     {
@@ -84,18 +98,20 @@ function makeExpectedShop(shop) {
 }
 
 function makeSiteFixtures() {
+  const testUsers = makeUsersArray();
   const blogCat = makeBlogCategories();
   const shopCat = makeShopCategories();
   const testBlog = makeBlogArray(blogCat);
   const testShop = makeShopArray(shopCat);
 
-  return { blogCat, shopCat, testBlog, testShop };
+  return { testUsers, blogCat, shopCat, testBlog, testShop };
 }
 
 function cleanTables(db) {
   return db.transaction(trx =>
     trx.raw(
       `TRUNCATE
+        honeyframe_admin,
         contact,
         shop,
         blog,
@@ -105,6 +121,7 @@ function cleanTables(db) {
     )
     .then(() =>
       Promise.all([
+        trx.raw(`ALTER SEQUENCE honeyframe_admin_id_seq minvalue 0 START WITH 1`),
         trx.raw(`ALTER SEQUENCE contact_id_seq minvalue 0 START WITH 1`),
         trx.raw(`ALTER SEQUENCE shop_id_seq minvalue 0 START WITH 1`),
         trx.raw(`ALTER SEQUENCE blog_id_seq minvalue 0 START WITH 1`),
@@ -113,6 +130,20 @@ function cleanTables(db) {
       ])
     )  
   )
+}
+
+function seedUsers(db, users) {
+  const preppedUsers = users.map(user => ({
+    ...user,
+    password: bcrypt.hashSync(user.password, 1)
+  }))
+  return db.into('honeyframe_admin').insert(preppedUsers)
+    .then(() =>
+      db.raw(
+        `SELECT setval('honeyframe_admin_id_seq', ?)`,
+        [users[users.length - 1].id],
+      )
+    )
 }
 
 function seedBlogCat(db, cat) {
@@ -157,7 +188,16 @@ function seedShop(db, cat, shop) {
   })
 }
 
+function makeAuthHeader(user, secret = process.env.JWT_SECRET) {
+  const token = jwt.sign({ user_id: user.id }, secret, {
+    subject: user.user_name,
+    algorithm: 'HS256',
+  });
+  return `Bearer ${token}`;
+}
+
 module.exports = {
+  makeUsersArray,
   makeBlogCategories,
   makeShopCategories,
   makeBlogArray,
@@ -166,6 +206,8 @@ module.exports = {
 
   makeSiteFixtures,
   cleanTables,
+  makeAuthHeader,
+  seedUsers,
   seedBlogCat,
   seedShopCat,
   seedBlog,
