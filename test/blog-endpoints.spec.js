@@ -6,6 +6,7 @@ describe('Blog Endpoints', function() {
   let db;
 
   const {
+    testUsers,
     blogCat,
     testBlog,
   } = helpers.makeSiteFixtures();
@@ -74,6 +75,51 @@ describe('Blog Endpoints', function() {
           .get(`/api/blog/${blogPost.id}`)
           .expect(200, expectedBlog)
       });
+    });
+  });
+
+  describe.only(`POST /api/blog`, () => {
+    beforeEach(() => {
+      helpers.seedUsers(
+        db,
+        testUsers
+      );
+      helpers.seedBlogCat(
+        db,
+        blogCat
+      )}
+    )
+
+    it(`creates a new blog post, responding with 201 and the post`, () => {
+      this.retries(3);
+      const testUser = testUsers[0]
+      const newPost = {
+        title: 'test',
+        post: '*'.repeat(73),
+        cat_id: 1,
+      }
+      return supertest(app)
+        .post(`/api/blog`)
+        .set('Authorization', helpers.makeAuthHeader(testUser))
+        .send(newPost)
+        .expect(201)
+        .expect(res => {
+          expect(res.body).to.have.property('id')
+          expect(res.body.title).to.eql(newPost.title)
+          expect(res.body.post).to.eql(newPost.post)
+        })
+        .expect(res =>
+          db
+            .from('blog')
+            .select('*')
+            .where({ id: res.body.id })
+            .first()
+            .then(row => {
+              expect(row.title).to.eql(newPost.title)
+              expect(row.post).to.eql(newPost.post)
+              expect(row.cat_id).to.eql(newPost.cat_id)
+            })  
+        )
     });
   });
 });

@@ -1,5 +1,6 @@
 const express = require('express');
 const xss = require('xss');
+const path = require('path');
 const BlogService = require('./blog-service');
 const { requireAuth } = require('../middleware/jwt-auth');
 
