@@ -1,6 +1,7 @@
 BEGIN;
 
 TRUNCATE
+  honeyframe_admin,
   contact,
   shop,
   blog,
@@ -100,5 +101,12 @@ VALUES
     ',
     3
   );
+
+INSERT INTO honeyframe_admin (
+  user_name,
+  password
+)
+VALUES
+  ('beekeeper', '$2a$12$2Fx4VG/qr8R43gPR..Hus..uo1AvnzPHIvkaSKk6yAhBksywCBYn.');
 
 COMMIT;
