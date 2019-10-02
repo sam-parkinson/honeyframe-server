@@ -14,7 +14,7 @@ blogRouter
       req.app.get('db')
     )
       .then(posts => {
-        res.json(posts.map(BlogService.scrubBlogShort))
+        res.json(posts.map(BlogService.scrubBlogShort).reverse())
       })
       .catch(next)
   })
