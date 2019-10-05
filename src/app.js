@@ -9,6 +9,7 @@ const authRouter = require('./auth/auth-router');
 const blogRouter = require('./blog/blog-router');
 const storeRouter = require('./store/store-router');
 const contactRouter = require('./contact/contact-router');
+const orderRouter = require('./order/order-router');
 
 const app = express();
 
@@ -29,6 +30,7 @@ app.use('/api/blog', blogRouter);
 app.use('/api/store', storeRouter);
 app.use('/api/contact', contactRouter);
 app.use('/api/img', express.static(path.posix.join(process.cwd(), 'img')));
+app.use('/api/order', orderRouter);
 
 app.use(function errorHandler(error, req, res, next) {
   let response;
