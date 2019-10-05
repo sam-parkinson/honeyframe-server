@@ -23,7 +23,7 @@ orderRouter
           card,
           email,
           cart
-        } = req.body.token;
+        } = req.body.token.token;
     
         const { 
           address_line1, 
@@ -40,10 +40,19 @@ orderRouter
           address_state, 
           address_zip 
         }
-        
-        console.log(address, email, cart);
 
-        res.status(200).send({ success: stripeRes });
+        const order_info = { cart, email, address, stripeRes };
+        const newOrder = ({ order_info })
+        
+        OrderService.insertOrder(
+          req.app.get('db'),
+          newOrder
+        )
+          .then(order => {
+            res
+              .status(201)
+              .json(order)
+          })
       }
     }
 

@@ -78,7 +78,7 @@ describe('Blog Endpoints', function() {
     });
   });
 
-  describe.only(`POST /api/blog`, () => {
+  describe(`POST /api/blog`, () => {
     beforeEach(() => {
       helpers.seedUsers(
         db,
