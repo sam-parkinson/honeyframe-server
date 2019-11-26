@@ -107,6 +107,6 @@ INSERT INTO honeyframe_admin (
   password
 )
 VALUES
-  ('beekeeper', '$2a$12$2Fx4VG/qr8R43gPR..Hus..uo1AvnzPHIvkaSKk6yAhBksywCBYn.');
+  ('beekeeper', '$2a$12$UUr1BcDGOH/dRaiob/wtnOZcWC7Zc76rmrwBRHp1.DCYYVI6m7eZm');
 
 COMMIT;
